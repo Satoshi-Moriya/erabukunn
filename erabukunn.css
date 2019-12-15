@@ -1,18 +1,48 @@
+body {
+    text-align: center;
+}
+
+/* アプリ名 */
 #appName {
     font-size: 50px;
 }
 
-p {
-    text-align: center;
-}
-
+/* データフォーム */
 form {
-    text-align: center;
+    /* text-align: center; */
     margin-bottom: 16px;
 }
 
-.btn-circle-3d {
+/* 登録データ */
+#regData {
     margin: 0 auto;
+}
+
+.regList li {
+    background: #ff8181;
+    color: #FFF;
+    list-style: none;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    border-radius: 3px;
+
+}
+
+.regList li span {
+    padding-right: 10px;
+}
+
+.fa-backspance {
+    cursor: pointer;
+    color: orange;
+}
+
+/* 選ぶボタン */
+.btn-circle-3d {
+    margin: 0 auto 50px;
     text-decoration: none;
     background: #ff8181;
     color: #FFF;
@@ -20,7 +50,7 @@ form {
     height: 200px;
     line-height: 200px;
     border-radius: 50%;
-    text-align: center;
+    /* text-align: center; */
     font-weight: bold;
     font-size: 35px;
     overflow: hidden;
@@ -35,4 +65,33 @@ form {
     transform: translateY(2px);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
     border-bottom: none;
+}
+
+/* データ削除ボタン */
+.btn-square {
+    width: 120px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #ff8181;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #bd6565;
+    border-radius: 3px;
+    margin: 0 auto;
+    /* text-align: center; */
+    user-select: none;
+  }
+  .btn-square:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
+
+.regList {
+    display: inline-block;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    /* text-align: center; */
+    width: auto;
+    padding-left: 0;
 }

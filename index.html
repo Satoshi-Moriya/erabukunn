@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="erabukunn.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>選ぶ君</title>
 </head>
 <body>
     <p id="appName">選ぶ君</p>
-    <form action="#" method="GET" name="form" onsubmit="return send();">
+    <form action="#" method="POST" name="form" onsubmit="return send();">
         <p>ランダムに選びたいデータを登録してね！</p>
         <input type="text" name="param" value="">
         <input type="submit" value="送信">
         <input type="reset">
     </form>
-    <div class="btn-circle-3d" id="kuji-btn">選ぶ！</div>
+    <!-- 登録データのリスト表示箇所 -->
+    <p>登録データ一覧</p>
+    <ul id="regData" class="regList"></ul>
+
+    <!-- データ登録ボタン -->
+    <div class="btn-circle-3d" id="kujiBtn">選ぶ！</div>
+    
+    <!-- データリセットボタン -->
+    <div href="#" class="btn-square" id="delData">データリセット</div>
+    
     <script src="erabukunn.js"></script>
 </body>
 </html>

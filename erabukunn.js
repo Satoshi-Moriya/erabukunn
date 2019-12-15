@@ -1,10 +1,27 @@
 'use strict';
 
-var dataCount = 0;               //登録したデータの数
-var receiveData = new Array();   //選んだ結果として出すデータ
+let dataCount = 0;               //登録したデータの数
+let receiveData = [];   //選んだ結果として出すデータ
+const kujiBtnDef = document.getElementById('kujiBtn').textContent;
+const list = document.querySelector('.regList');
+
+const createRegList = (param) => {
+    // HTMlテンプレートの作成
+    const html = `
+    <li>
+        <span>${param}</span>
+        <i class="fas fa-backspace delete"></i>
+    </li>
+    `;
+
+    list.innerHTML += html;
+}
 
 (function() {
-    var kujiBtn = document.getElementById('kuji-btn');
+
+    let kujiBtn = document.getElementById('kujiBtn');
+    let delData = document.getElementById('delData');
+    let delRegData = document.getElementById('regData');
 
     //選ぶボタンを推した時の挙動
     kujiBtn.addEventListener('click', function(){
@@ -12,24 +29,56 @@ var receiveData = new Array();   //選んだ結果として出すデータ
         if (dataCount == 0) {
             alert('データが登録されてませんよ！！！');
         } else {
-            var n = Math.floor(Math.random() * dataCount);
+            let n = Math.floor(Math.random() * dataCount);
             this.textContent = receiveData[n];            
         }
 
     });
 
+    // 登録データのリセット
+    delData.addEventListener('click', function() {
+        receiveData = [];
+        dataCount = 0;
+        kujiBtn.textContent = kujiBtnDef;
+        console.log(receiveData);
+        // while (delRegData) delRegData.removeChild(delRegData.children);
+        delRegData.textContent = null;
+    });
+
+    // 登録データを1つ1つ削除
+    list.addEventListener('click', e => {
+        let delList = e.target.parentElement;
+        let allList = list.querySelectorAll("li");
+        console.log(Array.prototype.indexOf.call(allList, delList));
+        let delNum = Array.prototype.indexOf.call(allList, delList);
+        if(e.target.classList.contains('delete')){
+            e.target.parentElement.remove();
+            receiveData.splice(delNum, 1);
+            // Array.prototype.call(allList).splice(delNum, 1);
+            dataCount--;
+            if(dataCount == 0) {
+                kujiBtn.textContent = kujiBtnDef;
+            }
+            console.log(receiveData);
+        }
+    })
+
 })();
 
+// データ登録
 function send() {
-    var param = document.form.param.value;
-    receiveData[dataCount] = param;
-    dataCount++;
+    let param = document.form.param.value;
 
-    //デバック
-    console.log(param);
-    console.log(dataCount);
-    console.log(receiveData);
-    console.log(receiveData.length);
-
-    return false;
+    // 登録データがからの時アラート
+    if (param.length == 0) {
+        alert('登録したいデータを入力しなきゃダメだぞ！！！');
+        return false;
+    } else {
+        receiveData[dataCount] = param;
+        dataCount++;
+    
+        createRegList(param);
+    
+        return false;
+    }
 }
