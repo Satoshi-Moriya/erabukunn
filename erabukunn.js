@@ -41,7 +41,6 @@ const createRegList = (param) => {
         dataCount = 0;
         kujiBtn.textContent = kujiBtnDef;
         console.log(receiveData);
-        // while (delRegData) delRegData.removeChild(delRegData.children);
         delRegData.textContent = null;
     });
 
@@ -54,7 +53,6 @@ const createRegList = (param) => {
         if(e.target.classList.contains('delete')){
             e.target.parentElement.remove();
             receiveData.splice(delNum, 1);
-            // Array.prototype.call(allList).splice(delNum, 1);
             dataCount--;
             if(dataCount == 0) {
                 kujiBtn.textContent = kujiBtnDef;
