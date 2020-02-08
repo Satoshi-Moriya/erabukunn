@@ -76,13 +76,14 @@ form {
     border-radius: 3px;
     margin: 0 auto;
     user-select: none;
-  }
-  .btn-square:active {
+}
+
+.btn-square:active {
     /*ボタンを押したとき*/
     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*下に動く*/
     border-bottom: none;/*線を消す*/
-  }
+}
 
 .regList {
     display: inline-block;
